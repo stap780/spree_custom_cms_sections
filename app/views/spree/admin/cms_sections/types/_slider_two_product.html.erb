@@ -1,0 +1,246 @@
+<div class="row pb-0">
+  <div class="col-12 col-md-4 mb-3">
+    <div id="image_one_details" class="card p-3">
+      <div class="text-center">
+        <h4 class="pb-2"><%= Spree.t('admin.cms.side_by_side.image_one') %></h4>
+        <% @cms_section.build_image_one unless @cms_section.image_one %>
+        <%= render partial: 'image_upload_form', locals: { f: f, image: :image_one } %>
+        <small class="text-muted"><%# Spree.t('admin.cms.side_by_side.image_info') %></small>
+      </div>
+
+        <% if @cms_section.link_type_one == 'Spree::Taxon'%> 
+          <%= f.field_container :title_one do %>
+            <%= f.label :title_one, Spree.t('admin.cms.title') %>
+            <%= f.text_field :title_one, class: 'form-control' %>
+            <%= f.error_message_on :title_one %>
+          <% end %>
+
+          <%= f.field_container :subtitle_one do %>
+            <%= f.label :subtitle_one, Spree.t('admin.cms.subtitle') %>
+            <%= f.text_field :subtitle_one, class: 'form-control' %>
+            <%= f.error_message_on :subtitle_one %>
+          <% end %>
+        <% end %>
+        
+        <div class="col-12"><hr></div>
+
+        <%= f.field_container :link_type_one do %>
+          <%= f.label :link_type_one, Spree.t('admin.navigation.link_to')+' 1' %>
+          <%= f.select(:link_type_one,
+              spree_humanize_dropdown_values('Spree::Cms::Sections::SliderTwoProduct',
+                                              { const: 'LINKED_RESOURCE_TYPE' }),
+                                              { include_blank: false },
+                                              class: 'link_switcher',
+                                              data: { target_field: :link_one}) %>
+          <%= f.error_message_on :link_type_one %>
+        <% end %>
+        <%= render "spree/admin/shared/link_fields", resource: @cms_section, linked_type: @cms_section.link_type_one, save_to: :link_one, f: f %>
+        <% if @cms_section.link_type_one == 'Spree::Product'%>  
+          <label for="">Text Position (from 0 to 100)</label>
+          <div class="d-flex">
+            <%= f.number_field :position_x_one, placeholder: :position_x , class: "form-control", max: 100, min: 0  %>
+            <%= f.number_field :position_y_one, placeholder: :position_y , class: "form-control", max: 100, min: 0  %>
+          </div>
+        <% end %>
+        <% if @cms_section.link_type_one != 'Spree::Taxon'%> 
+          <div class="col-12"><hr></div>
+          
+          <%= f.field_container :link_type_three do %>
+          <%= f.label :link_type_three, Spree.t('admin.navigation.link_to')+' 2' %>
+          <%= f.select(:link_type_three,
+              spree_humanize_dropdown_values('Spree::Cms::Sections::SliderTwoProduct',
+                                              { const: 'LINKED_RESOURCE_TYPE' }),
+                                              { include_blank: false },
+                                              class: 'link_switcher',
+                                              data: { target_field: :link_three}) %>
+          <%= f.error_message_on :link_type_three %>
+          <% end %>
+          <%= render "spree/admin/shared/link_fields", resource: @cms_section, linked_type: @cms_section.link_type_three, save_to: :link_three, f: f %>
+          <% if @cms_section.link_type_three == 'Spree::Product'%>
+            <label for="">Text Position (from 0 to 100)</label>
+            <div class="d-flex">
+              <%= f.number_field :position_x_three, placeholder: :position_x , class: "form-control", max: 100, min: 0  %>
+              <%= f.number_field :position_y_three, placeholder: :position_y , class: "form-control", max: 100, min: 0  %>
+            </div>
+          <% end %>
+         <% end %>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-4 mb-3">
+    <div id="image_two_details" class="card p-3">
+      <div class="text-center">
+        <h4 class="pb-2"><%= Spree.t('admin.cms.side_by_side.image_two') %></h4>
+        <% @cms_section.build_image_two unless @cms_section.image_two %>
+        <%= render partial: 'image_upload_form', locals: { f: f, image: :image_two } %>
+        <small class="text-muted"><%# Spree.t('admin.cms.side_by_side.image_info') %></small>
+      </div>
+
+      <% if @cms_section.link_type_two == 'Spree::Taxon'%> 
+        <%= f.field_container :title_two do %>
+          <%= f.label :title_two, Spree.t('admin.cms.title') %>
+          <%= f.text_field :title_two, class: 'form-control' %>
+          <%= f.error_message_on :title_two %>
+        <% end %>
+
+        <%= f.field_container :subtitle_two do %>
+          <%= f.label :subtitle_two, Spree.t('admin.cms.subtitle') %>
+          <%= f.text_field :subtitle_two, class: 'form-control' %>
+          <%= f.error_message_on :subtitle_two %>
+        <% end %>
+      <% end %>
+
+      <div class="col-12"><hr></div>
+
+      <%= f.field_container :link_type_two do %>
+        <%= f.label :link_type_two, Spree.t('admin.navigation.link_to')+' 1' %>
+        <%= f.select(:link_type_two,
+            spree_humanize_dropdown_values('Spree::Cms::Sections::SliderTwoProduct',
+                                            { const: 'LINKED_RESOURCE_TYPE' }),
+                                            { include_blank: false },
+                                            class: 'link_switcher',
+                                            data: { target_field: :link_two}) %>
+        <%= f.error_message_on :link_type_two %>
+      <% end %>
+      <%= render "spree/admin/shared/link_fields", resource: @cms_section, linked_type: @cms_section.link_type_two, save_to: :link_two, f: f %>
+      <% if @cms_section.link_type_two == 'Spree::Product'%>  
+        <label for="">Text Position (from 0 to 100)</label>
+        <div class="d-flex">
+        <%= f.number_field :position_x_two, placeholder: :position_x , class: "form-control", max: 100, min: 0  %>
+        <%= f.number_field :position_y_two, placeholder: :position_y , class: "form-control", max: 100, min: 0  %>
+        </div>
+      <% end %>
+      
+      <% if @cms_section.link_type_two != 'Spree::Taxon'%>  
+        <div class="col-12"><hr></div>
+        <%= f.field_container :link_type_four do %>
+          <%= f.label :link_type_four, Spree.t('admin.navigation.link_to')+' 2' %>
+          <%= f.select(:link_type_four,
+              spree_humanize_dropdown_values('Spree::Cms::Sections::SliderTwoProduct',
+                                              { const: 'LINKED_RESOURCE_TYPE' }),
+                                              { include_blank: false },
+                                              class: 'link_switcher',
+                                              data: { target_field: :link_four}) %>
+          <%= f.error_message_on :link_type_four %>
+        <% end %>
+        <%= render "spree/admin/shared/link_fields", resource: @cms_section, linked_type: @cms_section.link_type_four, save_to: :link_four, f: f %>
+        <% if @cms_section.link_type_four == 'Spree::Product'%>  
+          <label for="">Text Position (from 0 to 100)</label>
+          <div class="d-flex">
+          <%= f.number_field :position_x_four, placeholder: :position_x , class: "form-control", max: 100, min: 0  %>
+          <%= f.number_field :position_y_four, placeholder: :position_y , class: "form-control", max: 100, min: 0  %>
+          </div>
+        <% end %>
+      <% end %>
+
+    </div>
+  </div>
+
+    <div class="col-12 col-md-4 mb-3">
+        <div id="image_three_details" class="card p-3">
+        <div class="text-center">
+            <h4 class="pb-2"><%= Spree.t('admin.cms.side_by_side.image_three') %></h4>
+            <% @cms_section.build_image_three unless @cms_section.image_three %>
+            <%= render partial: 'image_upload_form', locals: { f: f, image: :image_three } %>
+            <small class="text-muted"><%# Spree.t('admin.cms.side_by_side.image_info') %></small>
+        </div>
+
+            <% if @cms_section.link_type_five == 'Spree::Taxon'%> 
+            <%= f.field_container :title_five do %>
+                <%= f.label :title_five, Spree.t('admin.cms.title') %>
+                <%= f.text_field :title_five, class: 'form-control' %>
+                <%= f.error_message_on :title_five %>
+            <% end %>
+
+            <%= f.field_container :subtitle_five do %>
+                <%= f.label :subtitle_five, Spree.t('admin.cms.subtitle') %>
+                <%= f.text_field :subtitle_five, class: 'form-control' %>
+                <%= f.error_message_on :subtitle_five %>
+            <% end %>
+            <% end %>
+            
+            <div class="col-12"><hr></div>
+
+            <%= f.field_container :link_type_five do %>
+            <%= f.label :link_type_five, Spree.t('admin.navigation.link_to')+' 1' %>
+            <%= f.select(:link_type_five,
+                spree_humanize_dropdown_values('Spree::Cms::Sections::SliderTwoProduct',
+                                                { const: 'LINKED_RESOURCE_TYPE' }),
+                                                { include_blank: false },
+                                                class: 'link_switcher',
+                                                data: { target_field: :link_five}) %>
+            <%= f.error_message_on :link_type_five %>
+            <% end %>
+            <%= render "spree/admin/shared/link_fields", resource: @cms_section, linked_type: @cms_section.link_type_five, save_to: :link_five, f: f %>
+            <% if @cms_section.link_type_five == 'Spree::Product'%>  
+            <label for="">Text Position (from 0 to 100)</label>
+            <div class="d-flex">
+                <%= f.number_field :position_x_five, placeholder: :position_x , class: "form-control", max: 100, min: 0  %>
+                <%= f.number_field :position_y_five, placeholder: :position_y , class: "form-control", max: 100, min: 0  %>
+            </div>
+            <% end %>
+            <% if @cms_section.link_type_five != 'Spree::Taxon'%> 
+            <div class="col-12"><hr></div>
+            
+            <%= f.field_container :link_type_six do %>
+            <%= f.label :link_type_six, Spree.t('admin.navigation.link_to')+' 2' %>
+            <%= f.select(:link_type_six,
+                spree_humanize_dropdown_values('Spree::Cms::Sections::SliderTwoProduct',
+                                                { const: 'LINKED_RESOURCE_TYPE' }),
+                                                { include_blank: false },
+                                                class: 'link_switcher',
+                                                data: { target_field: :link_six}) %>
+            <%= f.error_message_on :link_type_six %>
+            <% end %>
+            <%= render "spree/admin/shared/link_fields", resource: @cms_section, linked_type: @cms_section.link_type_six, save_to: :link_six, f: f %>
+            <% if @cms_section.link_type_six == 'Spree::Product'%>
+                <label for="">Text Position (from 0 to 100)</label>
+                <div class="d-flex">
+                <%= f.number_field :position_x_six, placeholder: :position_x , class: "form-control", max: 100, min: 0  %>
+                <%= f.number_field :position_y_six, placeholder: :position_y , class: "form-control", max: 100, min: 0  %>
+                </div>
+            <% end %>
+            <% end %>
+        </div>
+    </div>
+
+
+<div class="col-12"><hr></div>
+  <div class="col-4">
+    <%= f.field_container :fit do %>
+      <%= f.label :fit, Spree.t('admin.cms.fit') %>
+      <%= f.select(:fit, @cms_section.boundaries, {include_blank: false}, class: 'select2') %>
+      <%= f.error_message_on :fit %>
+    <% end %>
+  </div>
+
+  <div class="col-4">
+    <%= f.field_container :gutters do %>
+      <%= f.label :gutters, Spree.t('admin.cms.set_gutters') %>
+      <%= f.select(:gutters, @cms_section.gutters_sizes, {include_blank: false}, class: 'select2') %>
+      <%= f.error_message_on :gutters %>
+    <% end %>
+  </div>
+  <div class="col-4">
+    <%= f.field_container :indicators do %>
+      <%= f.label :indicators, Spree.t('admin.cms.set_indicators') %>
+      <%= f.select(:indicators, @cms_section.indicators_sizes, {include_blank: false}, class: 'select2') %>
+      <%= f.error_message_on :indicators %>
+    <% end %>
+  </div>
+  <div class="col-4">
+    <%= f.field_container :controls do %>
+      <%= f.label :controls, Spree.t('admin.cms.set_controls') %>
+      <%= f.select(:controls, @cms_section.controls_sizes, {include_blank: false}, class: 'select2') %>
+      <%= f.error_message_on :controls %>
+    <% end %>
+  </div>
+  <div class="col-4">
+    <%= f.field_container :intervals do %>
+      <%= f.label :intervals, Spree.t('admin.cms.set_intervals') %>
+      <%= f.select(:intervals, @cms_section.intervals_sizes, {include_blank: false}, class: 'select2') %>
+      <%= f.error_message_on :intervals %>
+    <% end %>
+  </div>
+
+</div>

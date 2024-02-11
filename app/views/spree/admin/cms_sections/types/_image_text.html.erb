@@ -1,0 +1,83 @@
+<div class="row pb-0">
+  <div class="col-12 col-md-6 mb-3">
+    <div id="left_image_details" class="card p-3">
+      <div class="text-center">
+        <h4 class="pb-2"><%= Spree.t('admin.cms.side_by_side.left_image') %></h4>
+        <% @cms_section.build_image_one unless @cms_section.image_one %>
+        <%= render partial: 'image_upload_form', locals: { f: f, image: :image_one } %>
+        <small class="text-muted"><%# Spree.t('admin.cms.side_by_side.image_info') %></small>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 mb-3">
+    <div id="right_image_details" class="card p-3">
+      <div class="text-center">
+        <h4 class="pb-2"><%= Spree.t('admin.cms.side_by_side.right_image') %></h4>
+        <% @cms_section.build_image_two unless @cms_section.image_two %>
+        <%= render partial: 'image_upload_form', locals: { f: f, image: :image_two } %>
+        <small class="text-muted"><%# Spree.t('admin.cms.side_by_side.image_info') %></small>
+      </div>
+    </div>
+  </div>
+
+    <div class="col-12"><hr></div>
+    <div class="col-12">
+        <%= f.field_container :text1 do %>
+            <%= f.label :text1, Spree.t('admin.cms.text1') %>
+            <%= f.text_field :text1, class: 'form-control' %>
+            <%= f.error_message_on :text1 %>
+        <% end %>
+    </div>
+    <div class="col-12">
+        <%= f.field_container :text2 do %>
+            <%= f.label :text2, Spree.t('admin.cms.text2') %>
+            <%= f.text_field :text2, class: 'form-control' %>
+            <%= f.error_message_on :text2 %>
+        <% end %>
+    </div>
+    <div class="col-12">
+        <%= f.field_container :text3 do %>
+            <%= f.label :text3, Spree.t('admin.cms.text3') %>
+            <%= f.text_field :text3, class: 'form-control' %>
+            <%= f.error_message_on :text3 %>
+        <% end %>
+    </div>
+    <div class="col-12">
+        <%= f.field_container :text4 do %>
+            <%= f.label :text4, Spree.t('admin.cms.text4') %>
+            <%= f.text_field :text4, class: 'form-control' %>
+            <%= f.error_message_on :text4 %>
+        <% end %>
+    </div>
+<div class="col-12"><hr></div>
+
+    <div class="col-4">
+        <%= f.field_container :fit do %>
+            <%= f.label :fit, Spree.t('admin.cms.fit') %>
+            <%= f.select(:fit, @cms_section.boundaries, {include_blank: false}, class: 'select2') %>
+            <%= f.error_message_on :fit %>
+        <% end %>
+    </div>
+
+    <div class="col-4">
+        <%= f.field_container :gutters do %>
+            <%= f.label :gutters, Spree.t('admin.cms.set_gutters') %>
+            <%= f.select(:gutters, @cms_section.gutters_sizes, {include_blank: false}, class: 'select2') %>
+            <%= f.error_message_on :gutters %>
+        <% end %>
+    </div>
+
+  <%= f.field_container :padding_top, class: ['col-4'] do %>
+    <%= f.label :padding_top, Spree.t('admin.cms.set_padding_top') %>
+    <%= f.select(:padding_top, @cms_section.padding_top_sizes, {include_blank: false}, class: 'select2') %>
+    <%= f.error_message_on :padding_top %>
+  <% end %>
+  <%= f.field_container :padding_bottom, class: ['col-4'] do %>
+    <%= f.label :padding_bottom, Spree.t('admin.cms.set_padding_bottom') %>
+    <%= f.select(:padding_bottom, @cms_section.padding_bottom_sizes, {include_blank: false}, class: 'select2') %>
+    <%= f.error_message_on :padding_bottom %>
+  <% end %>
+
+
+</div>

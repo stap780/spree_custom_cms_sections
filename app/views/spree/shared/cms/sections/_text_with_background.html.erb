@@ -1,0 +1,10 @@
+
+<div class="py-12" style="background-color: <%= section.background_color.present? ? section.background_color : '#000000' %>;">
+    <div class="container">
+        <div class="row">
+            <span class="marcel-text-with-background px-0">
+                <%= section.text.present? ? section.text.html_safe : 'no text' %>
+            </span>
+        </div>
+    </div>
+</div>

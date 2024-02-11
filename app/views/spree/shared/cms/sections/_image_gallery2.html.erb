@@ -1,0 +1,24 @@
+<div class="wrap pt-<%= section.padding_top%> pb-<%= section.padding_bottom%> px-0">
+    <% if section.title.present?%>
+        <div class="image-gallery-2-title mb-5 ms-4">
+            <% if section.title_link.present?%>
+                <a href="<%= section.title_link %>" target="_blank"><%= section.title %></a>
+            <% else %>
+                <span><%= section.title.html_safe %></span>
+            <% end %>
+        </div>
+    <% end %>
+    <div class="d-flex align-items-end gap-3">
+        <% Spree::Cms::Sections::ImageGallery2::NAME_ARRAY.each do |val| %>
+            <% if section.send("image_#{val}")&.attachment&.attached? %>
+            <div style="flex:1;">
+                    <img class="d-block w-100 lazyload"
+                        data-src="<%= main_app.cdn_image_url( section.send("image_#{val}").attachment ) %>"
+                        data-srcset="<%= main_app.cdn_image_url( section.send("image_#{val}").attachment ) %>"
+                        alt="<%= section&.send("title_#{val}") %>">
+
+            </div>
+            <% end %>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+
+<% img = section.img_one_xl if section.image_one&.attachment&.attached? && section.link_type_one == 'Spree::Taxon' %>
+<% img = section.img_two_xl if section.image_two&.attachment&.attached? && section.link_type_two == 'Spree::Taxon' %>
+<% title = section&.title_one if section.link_type_one == 'Spree::Taxon' %>
+<% title = section&.title_two if section.link_type_two == 'Spree::Taxon' %>
+<% subtitle = section.subtitle_one if section.link_type_one == 'Spree::Taxon' %>
+<% subtitle = section.subtitle_two if section.link_type_two == 'Spree::Taxon' %>
+
+<% link = spree.nested_taxons_path(section.link_one) if section.link_one.present? && section.link_type_one == 'Spree::Taxon'  %>
+<% link = spree.nested_taxons_path(section.link_two) if section.link_two.present? && section.link_type_two == 'Spree::Taxon' %>
+
+
+<div class="d-flex flex-column px-9 align-items-center">
+    <div class="section-img-wrap text-center">
+        <%# section.to_json%>
+        <% if img.present? %>
+            <img class="img-fluid lazyload" data-src="<%= main_app.cdn_image_url(img) %>" data-srcset="<%= main_app.cdn_image_url(img) %>" />
+        <% else %>
+            <%= icon( name: 'card-image',classes: 'text-black-50',width: 26,height: 26) %>
+        <% end %>
+    </div>
+     <% if title.present? || subtitle.present? %>
+        <div class="section-content-wrap">
+            <div class="section-subtitle py-6">
+                <%= subtitle if subtitle.present?%>
+            </div>
+            <div class="section-title">
+                <%= link_to link, class: "link d-flex" do %>
+                <%= title %>
+                <%= icon(name: 'section-title-arrow-right', classes: 'spree-icon-arrow ms-1', width: 167, height: 8) %>
+                <% end if title.present? %>
+            </div>
+        </div>
+    <% end %>
+</div>

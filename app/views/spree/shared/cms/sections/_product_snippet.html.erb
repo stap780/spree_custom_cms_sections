@@ -1,0 +1,60 @@
+<% img = section.img_one_xl if section.image_one&.attachment&.attached? && section.link_type_one != 'Spree::Taxon' %>
+<% img = section.img_two_xl if section.image_two&.attachment&.attached? && section.link_type_two != 'Spree::Taxon' %>
+<%# title = section&.title_one if section.link_type_one != 'Spree::Taxon' %>
+<%# title = section&.title_two if section.link_type_two != 'Spree::Taxon' %>
+<%# subtitle = section.subtitle_one if section.link_type_one != 'Spree::Taxon' %>
+<%# subtitle = section.subtitle_two if section.link_type_two != 'Spree::Taxon' %>
+
+<% pr_title1 = Spree::Product.find_by_slug(section.link_one).name if section.link_one.present? && section.link_type_one != 'Spree::Taxon'  %>
+<% pr_title1 = Spree::Product.find_by_slug(section.link_two).name if section.link_two.present? && section.link_type_two != 'Spree::Taxon' %>
+<% pr_title2 = Spree::Product.find_by_slug(section.link_three).name if section.link_three.present? && section.link_type_three != 'Spree::Taxon'  %>
+<% pr_title2 = Spree::Product.find_by_slug(section.link_four).name if section.link_four.present? && section.link_type_four != 'Spree::Taxon' %>
+
+<% default_variant1 = Spree::Product.find_by_slug(section.link_one).default_variant if section.link_one.present? && section.link_type_one != 'Spree::Taxon'  %>
+<% default_variant1 = Spree::Product.find_by_slug(section.link_two).default_variant if section.link_two.present? && section.link_type_two != 'Spree::Taxon' %>
+<% default_variant2 = Spree::Product.find_by_slug(section.link_three).default_variant if section.link_three.present? && section.link_type_three != 'Spree::Taxon'  %>
+<% default_variant2 = Spree::Product.find_by_slug(section.link_four).default_variant if section.link_four.present? && section.link_type_four != 'Spree::Taxon' %>
+
+<% link1 = spree.product_path(section.link_one) if section.link_one.present? && section.link_type_one != 'Spree::Taxon'  %>
+<% link1 = spree.product_path(section.link_two) if section.link_two.present? && section.link_type_two != 'Spree::Taxon' %>
+<% link2 = spree.product_path(section.link_three) if section.link_three.present? && section.link_type_three != 'Spree::Taxon'  %>
+<% link2 = spree.product_path(section.link_four) if section.link_four.present? && section.link_type_four != 'Spree::Taxon' %>
+
+<% position_x1 = section.position_x_one if section.link_one.present? && section.link_type_one != 'Spree::Taxon'  %>
+<% position_y1 = section.position_y_one if section.link_one.present? && section.link_type_one != 'Spree::Taxon' %>
+<% position_x1 = section.position_x_two if section.link_two.present? && section.link_type_two != 'Spree::Taxon'  %>
+<% position_y1 = section.position_y_two if section.link_two.present? && section.link_type_two != 'Spree::Taxon' %>
+<% position_x2 = section.position_x_three if section.link_three.present? && section.link_type_three != 'Spree::Taxon'  %>
+<% position_y2 = section.position_y_three if section.link_three.present? && section.link_type_three != 'Spree::Taxon' %>
+<% position_x2 = section.position_x_four if section.link_four.present? && section.link_type_four != 'Spree::Taxon'  %>
+<% position_y2 = section.position_y_four if section.link_four.present? && section.link_type_four != 'Spree::Taxon' %>
+
+
+<div class="section-product-wrap position-relative">
+    <div class="section-img-wrap">
+        <%# section.to_json%>
+        <% if img.present? %>
+            <img class="img-fluid lazyload" data-src="<%= main_app.cdn_image_url(img) %>" data-srcset="<%= main_app.cdn_image_url(img) %>" />
+        <% else %>
+            <%= icon( name: 'card-image',classes: 'text-black-50',width: 26,height: 26) %>
+        <% end %>
+    </div>
+    <div class="pr1 position-absolute w-100" style="top: <%= position_y1%>%; left: <%= position_x1%>%;">
+        <% if pr_title1.present? %>
+            <%= link_to link1, class: "link d-flex text-decoration-none ps-4" do %>
+                <%= pr_title1 %><br>
+                <%= display_price(default_variant1) %>
+            <% end %>
+            <%= link_to Spree.t(:add_to_cart), link1, class: "buy text-white ps-4" %>
+        <% end %>
+    </div>
+    <div class="pr2 position-absolute w-100" style="top: <%= position_y2%>%; left: <%= position_x2%>%;">
+        <% if pr_title2.present? %>
+            <%= link_to link2, class: "link d-flex text-decoration-none ps-4" do %>
+                <%= pr_title2 %><br>
+                <%= display_price(default_variant2) %>
+            <% end %>
+            <%= link_to Spree.t(:add_to_cart), link2, class: "buy text-white ps-4" %>
+        <% end %>
+    </div>
+</div>
