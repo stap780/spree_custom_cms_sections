@@ -25,6 +25,7 @@ module SpreeCustomCmsSections
       Spree::CmsSection::TYPES << 'Spree::Cms::Sections::ImageText'
       Spree::CmsSection::TYPES << 'Spree::Cms::Sections::SliderTwoProduct'
       Spree::CmsSection::TYPES << 'Spree::Cms::Sections::TextWithBackground'
+      Spree::CmsSection::TYPES << 'Spree::Cms::Sections::ImageTextHeader'
     end
 
     config.to_prepare(&method(:activate).to_proc)
