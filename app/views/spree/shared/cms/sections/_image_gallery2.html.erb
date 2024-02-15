@@ -1,4 +1,7 @@
-<div class="wrap pt-<%= section.padding_top%> pb-<%= section.padding_bottom%> px-0">
+<% view_class = 'd-block d-lg-none' if section.view_mobile?%>
+<% view_class = 'd-none d-lg-block' if section.view_desktop?%>
+
+<div class="wrap pt-<%= section.padding_top%> pb-<%= section.padding_bottom%> px-0 <%=view_class%>">
     <% if section.title.present?%>
         <div class="image-gallery-2-title mb-5 ms-4">
             <% if section.title_link.present?%>

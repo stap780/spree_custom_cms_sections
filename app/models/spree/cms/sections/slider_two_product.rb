@@ -12,12 +12,19 @@ module Spree::Cms::Sections
                                   :link_type_five, :link_five, :title_five, :subtitle_five, :position_x_five, :position_y_five,
                                   :link_type_six, :link_six, :title_six, :subtitle_six, :position_x_six, :position_y_six,], coder: JSON
   
-      store :settings, accessors: [:gutters, :indicators, :controls, :intervals], coder: JSON
+      store :settings, accessors: [:gutters, :indicators, :controls, :intervals, :viewports], coder: JSON
   
         def gutters?
             gutters == 'Gutters'
         end
-
+        def view_mobile?
+          viewports == 'Mobile'
+        end
+  
+        def view_desktop?
+          viewports == 'Desktop'
+        end
+  
         def indicators?
             indicators == 'Indicators'
         end
@@ -117,6 +124,7 @@ module Spree::Cms::Sections
         self.controls ||= 'Controls'
         self.intervals ||= 'No intervals'
         self.fit ||= 'Container'
+        self.viewports ||= 'All'
         self.link_type_one ||= 'Spree::Product'
         self.link_type_two ||= 'Spree::Product'
         self.link_type_three ||= 'Spree::Product'

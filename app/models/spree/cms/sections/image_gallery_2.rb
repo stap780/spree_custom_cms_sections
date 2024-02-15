@@ -22,13 +22,20 @@ module Spree::Cms::Sections
                                     :link_type_nine, :link_nine, :title_nine
                                     ], coder: JSON
     
-        store :settings, accessors: [:layout_style, :display_labels, :gutters, :padding_top, :padding_bottom,:margin_top, :margin_bottom], coder: JSON
+        store :settings, accessors: [:layout_style, :display_labels, :gutters, :padding_top, :padding_bottom,:margin_top, :margin_bottom,  :viewports], coder: JSON
     
         
         def gutters?
             gutters == 'Gutters'
         end
-
+        def view_mobile?
+          viewports == 'Mobile'
+        end
+  
+        def view_desktop?
+          viewports == 'Desktop'
+        end
+  
 
         # img_one sizing
         def img_one_md(dimensions = '270x195>')
@@ -144,6 +151,7 @@ module Spree::Cms::Sections
           self.gutters ||= 'Gutters'
           self.padding_top ||= '0'
           self.padding_bottom ||= '0'
+          self.viewports ||= 'All'
           self.link_type_one ||= 'Spree::Taxon'
           self.link_type_two ||= 'Spree::Taxon'
           self.link_type_three ||= 'Spree::Taxon'

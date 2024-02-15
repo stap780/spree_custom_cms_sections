@@ -2,7 +2,7 @@ module Spree::Cms::Sections
     class ImageTextHeader < Spree::CmsSection
       after_initialize :default_values
   
-      store :content, accessors: [:text], coder: JSON
+      store :content, accessors: [:text, :text_mobile], coder: JSON
       store :settings, accessors: [:gutters], coder: JSON
   
       LINKED_RESOURCE_TYPE = []

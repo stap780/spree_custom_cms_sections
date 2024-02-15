@@ -84,5 +84,12 @@
     <%= f.select(:padding_bottom, @cms_section.padding_bottom_sizes, {include_blank: false}, class: 'select2') %>
     <%= f.error_message_on :padding_bottom %>
   <% end %>
+  <div class="col-4">
+    <%= f.field_container :viewports do %>
+      <%= f.label :viewports, Spree.t('admin.cms.set_viewports') %>
+      <%= f.select(:viewports, @cms_section.viewports_sizes, {include_blank: false}, class: 'select2') %>
+      <%= f.error_message_on :viewports %>
+    <% end %>
+  </div>
 
 </div>

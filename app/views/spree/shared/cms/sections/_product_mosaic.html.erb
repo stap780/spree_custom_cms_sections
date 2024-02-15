@@ -1,15 +1,18 @@
+<% view_class = 'd-block d-lg-none' if section.view_mobile?%>
+<% view_class = 'd-none d-lg-block' if section.view_desktop?%>
+
 <% if section.linked_resource %>
-<div class="py-8 px-0">
+<div class="my-lg-5 py-lg-5 px-0 <%= view_class%>">
     <% taxon = Spree::Taxon.find_by_id(section.linked_resource.id)%>
-    <div class="font-weight-bold homepage-carousel-text text-uppercase mb-5">
+    <div class="font-weight-bold homepage-carousel-text text-uppercase mb-5 d-none d-lg-block">
         <%= section.title.present? ? section.title : taxon.name %>
     </div>
 
-    <div class="d-flex taxon_products_<%= section.linked_resource.id%>">
+    <div class="d-flex taxon_products_<%= section.linked_resource.id%> row border-lg-0">
         <% if taxon.products.count > 0 %>
             
             <% taxon.products.limit(4).each do |product| %>
-                <div id="product_<%= product.id %>" class="col-3 pt-3 pb-4 px-3 position-relative">
+                <div id="product_<%= product.id %>" class="col-6 col-md-3 pt-3 pb-4 px-3 position-relative border-lg-0 mosaiclItem">
                     <%= render 'spree/shared/product', product: product, image_class: 'product-component-plp-image' %>
                 </div>
             <% end %>

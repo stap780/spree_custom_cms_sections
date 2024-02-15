@@ -1,9 +1,13 @@
+<% view_class = 'd-block d-lg-none' if section.view_mobile?%>
+<% view_class = 'd-none d-lg-block' if section.view_desktop?%>
+
+
 <% images = []%>
 <% images.push('one') if section.image_one&.attachment&.attached?%>
 <% images.push('two') if section.image_two&.attachment&.attached?%>
 <% images.push('three') if section.image_three&.attachment&.attached?%>
 
-<div id="carouselExampleCaptions_<%= section.id%>" class="carousel slide" 
+<div id="carouselExampleCaptions_<%= section.id%>" class="carousel slide <%= view_class%>" 
         <% if section.intervals? %> data-bs-ride="true" <% else %> data-bs-ride="false" <%end%> >
     <% if section.indicators? %>
         <div class="carousel-indicators">

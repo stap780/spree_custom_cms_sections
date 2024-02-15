@@ -152,4 +152,12 @@
       <%= f.error_message_on :gutters %>
     <% end %>
   </div>
+    <div class="col-6">
+    <%= f.field_container :viewports do %>
+      <%= f.label :viewports, Spree.t('admin.cms.set_viewports') %>
+      <%= f.select(:viewports, @cms_section.viewports_sizes, {include_blank: false}, class: 'select2') %>
+      <%= f.error_message_on :viewports %>
+    <% end %>
+  </div>
+
 </div>

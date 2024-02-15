@@ -10,10 +10,17 @@ module Spree::Cms::Sections
                                   :link_type_three, :link_three, :title_three, :subtitle_three, :position_x_three, :position_y_three,
                                   :link_type_four, :link_four, :title_four, :subtitle_four, :position_x_four, :position_y_four], coder: JSON
   
-      store :settings, accessors: [:gutters], coder: JSON
+      store :settings, accessors: [:gutters, :viewports], coder: JSON
   
         def gutters?
             gutters == 'Gutters'
+        end
+        def view_mobile?
+          viewports == 'Mobile'
+        end
+  
+        def view_desktop?
+          viewports == 'Desktop'
         end
   
       #
@@ -74,6 +81,7 @@ module Spree::Cms::Sections
       def default_values
         self.gutters ||= 'Gutters'
         self.fit ||= 'Container'
+        self.viewports ||= 'All'
         self.link_type_one ||= 'Spree::Product'
         self.link_type_two ||= 'Spree::Product'
         self.link_type_three ||= 'Spree::Product'
