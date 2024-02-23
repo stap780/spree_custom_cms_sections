@@ -10,21 +10,21 @@
 <% link = spree.nested_taxons_path(section.link_two) if section.link_two.present? && section.link_type_two == 'Spree::Taxon' %>
 
 
-<div class="d-flex flex-column p-5 mx-0 mx-lg-4 align-items-center">
+<div class="d-flex flex-column p-5 mx-0 mx-lg-4 align-items-center section-taxon-wrap">
         <div class="section-img-wrap text-center">
             <%# section.to_json%>
             <% if img.present? %>
-                <img class="img-fluid lazyload" data-src="<%= main_app.cdn_image_url(img) %>" data-srcset="<%= main_app.cdn_image_url(img) %>" />
+                <img class="img-fluid lazyload" data-src="<%= main_app.cdn_image_url(img) %>" data-srcset="<%= main_app.cdn_image_url(img) %>" style="max-height: 500px;"/>
             <% else %>
                 <%= icon( name: 'card-image',classes: 'text-black-50',width: 26,height: 26) %>
             <% end %>
         </div>
         <% if title.present? || subtitle.present? %>
             <div class="section-content-wrap">
-                <div class="section-subtitle py-6">
+                <div class="section-subtitle py-4">
                     <%= subtitle if subtitle.present?%>
                 </div>
-                <div class="section-title">
+                <div class="section-title pt-2">
                     <%= link_to link, class: "link d-flex" do %>
                     <%= title %>
                     <%= icon(name: 'section-title-arrow-right', classes: 'spree-icon-arrow ms-1', width: 167, height: 8) %>
