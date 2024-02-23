@@ -1,10 +1,10 @@
 <% view_class = 'd-block d-lg-none' if section.view_mobile?%>
 <% view_class = 'd-none d-lg-block' if section.view_desktop?%>
 
-<div class="py-12 <%= view_class%>" style="background-color: <%= section.background_color.present? ? section.background_color : '#000000' %>;">
+<div class="py-11 <%= view_class%>" style="background-color: <%= section.background_color.present? ? section.background_color : '#000000' %>;">
     <div class="container">
         <div class="row">
-            <span class="marcel-text-with-background px-0">
+            <span class="marcel-text-with-background px-2 px-lg-0">
                 <%= section.text.present? ? section.text.html_safe : 'no text' %>
             </span>
         </div>
