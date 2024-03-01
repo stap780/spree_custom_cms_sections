@@ -13,17 +13,16 @@
         <% end %>
     </div>
 
-      <div class="col-6 col-md-6 pt-4">
-        <% @cms_section.build_image_one unless @cms_section.image_one %>
-        <%= render partial: 'image_upload_form', locals: { f: f, image: :image_one } %>
-        <small class="form-text text-muted">desktop image</small>
-      </div>
-      <div class="col-6 col-md-6 pt-4">
-        <% @cms_section.build_image_two unless @cms_section.image_two %>
-        <%= render partial: 'image_upload_form', locals: { f: f, image: :image_two } %>
-        <small class="form-text text-muted">mobile image</small>
-      </div>
-</div>
+    <div class="col-6 col-md-6 pt-4">
+      <% @cms_section.build_image_one unless @cms_section.image_one %>
+      <%= render partial: 'image_upload_form', locals: { f: f, image: :image_one } %>
+      <small class="form-text text-muted">desktop image</small>
+    </div>
+    <div class="col-6 col-md-6 pt-4">
+      <% @cms_section.build_image_two unless @cms_section.image_two %>
+      <%= render partial: 'image_upload_form', locals: { f: f, image: :image_two } %>
+      <small class="form-text text-muted">mobile image</small>
+    </div>
 
     <div class="row">
       <%= f.field_container :fit, class: ['col-6'] do %>
@@ -37,10 +36,10 @@
         <%= f.select(:gutters, @cms_section.gutters_sizes, {include_blank: false}, class: 'select2') %>
         <%= f.error_message_on :gutters %>
       <% end %>
-  </div>
+    </div>
 
 
-  <div class="col-12 col-md-6">
-    <%= render "spree/admin/shared/link_fields", resource: @cms_section, f: f %>
-  </div>
+    <div class="col-12 col-md-6">
+      <%= render "spree/admin/shared/link_fields", resource: @cms_section, f: f %>
+    </div>
 </div>
