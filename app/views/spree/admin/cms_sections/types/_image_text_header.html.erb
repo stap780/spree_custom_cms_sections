@@ -24,19 +24,17 @@
       <small class="form-text text-muted">mobile image</small>
     </div>
 
-    <div class="row">
-      <%= f.field_container :fit, class: ['col-6'] do %>
-        <%= f.label :fit, Spree.t('admin.cms.fit') %>
-        <%= f.select(:fit, @cms_section.boundaries, {include_blank: false}, class: 'select2') %>
-        <%= f.error_message_on :fit %>
-      <% end %>
+    <%= f.field_container :fit, class: ['col-6'] do %>
+      <%= f.label :fit, Spree.t('admin.cms.fit') %>
+      <%= f.select(:fit, @cms_section.boundaries, {include_blank: false}, class: 'select2') %>
+      <%= f.error_message_on :fit %>
+    <% end %>
 
-      <%= f.field_container :gutters, class: ['col-6'] do %>
-        <%= f.label :gutters, Spree.t('admin.cms.gutters') %>
-        <%= f.select(:gutters, @cms_section.gutters_sizes, {include_blank: false}, class: 'select2') %>
-        <%= f.error_message_on :gutters %>
-      <% end %>
-    </div>
+    <%= f.field_container :gutters, class: ['col-6'] do %>
+      <%= f.label :gutters, Spree.t('admin.cms.gutters') %>
+      <%= f.select(:gutters, @cms_section.gutters_sizes, {include_blank: false}, class: 'select2') %>
+      <%= f.error_message_on :gutters %>
+    <% end %>
 
 
     <div class="col-12 col-md-6">

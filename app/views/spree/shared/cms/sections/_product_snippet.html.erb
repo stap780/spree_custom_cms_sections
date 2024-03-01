@@ -5,15 +5,20 @@
 <%# subtitle = section.subtitle_one if section.link_type_one != 'Spree::Taxon' %>
 <%# subtitle = section.subtitle_two if section.link_type_two != 'Spree::Taxon' %>
 
-<% pr_title1 = Spree::Product.find_by_slug(section.link_one).name if section.link_one.present? && section.link_type_one != 'Spree::Taxon'  %>
-<% pr_title1 = Spree::Product.find_by_slug(section.link_two).name if section.link_two.present? && section.link_type_two != 'Spree::Taxon' %>
-<% pr_title2 = Spree::Product.find_by_slug(section.link_three).name if section.link_three.present? && section.link_type_three != 'Spree::Taxon'  %>
-<% pr_title2 = Spree::Product.find_by_slug(section.link_four).name if section.link_four.present? && section.link_type_four != 'Spree::Taxon' %>
+<% pr1 = Spree::Product.find_by_slug(section.link_one)%>
+<% pr2 = Spree::Product.find_by_slug(section.link_two)%>
+<% pr3 = Spree::Product.find_by_slug(section.link_three)%>
+<% pr4 = Spree::Product.find_by_slug(section.link_four)%>
 
-<% default_variant1 = Spree::Product.find_by_slug(section.link_one).default_variant if section.link_one.present? && section.link_type_one != 'Spree::Taxon'  %>
-<% default_variant1 = Spree::Product.find_by_slug(section.link_two).default_variant if section.link_two.present? && section.link_type_two != 'Spree::Taxon' %>
-<% default_variant2 = Spree::Product.find_by_slug(section.link_three).default_variant if section.link_three.present? && section.link_type_three != 'Spree::Taxon'  %>
-<% default_variant2 = Spree::Product.find_by_slug(section.link_four).default_variant if section.link_four.present? && section.link_type_four != 'Spree::Taxon' %>
+<% pr_title1 = pr1.name if section.link_one.present? && pr1.present? && section.link_type_one != 'Spree::Taxon'  %>
+<% pr_title1 = pr2.name if section.link_two.present? && pr2.present? && section.link_type_two != 'Spree::Taxon' %>
+<% pr_title2 = pr3.name if section.link_three.present? && pr3.present? && section.link_type_three != 'Spree::Taxon'  %>
+<% pr_title2 = pr4.name if section.link_four.present? && pr4.present? && section.link_type_four != 'Spree::Taxon' %>
+
+<% default_variant1 = pr1.default_variant if section.link_one.present? && pr1.present? && section.link_type_one != 'Spree::Taxon'  %>
+<% default_variant1 = pr2.default_variant if section.link_two.present? && pr2.present? && section.link_type_two != 'Spree::Taxon' %>
+<% default_variant2 = pr3.default_variant if section.link_three.present? && pr3.present? && section.link_type_three != 'Spree::Taxon'  %>
+<% default_variant2 = pr4.default_variant if section.link_four.present? && pr4.present? && section.link_type_four != 'Spree::Taxon' %>
 
 <% link1 = spree.product_path(section.link_one) if section.link_one.present? && section.link_type_one != 'Spree::Taxon'  %>
 <% link1 = spree.product_path(section.link_two) if section.link_two.present? && section.link_type_two != 'Spree::Taxon' %>
