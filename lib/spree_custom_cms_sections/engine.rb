@@ -18,6 +18,8 @@ module SpreeCustomCmsSections
         Rails.configuration.cache_classes ? require(c) : load(c)
       end
 
+      Spree::CmsPage::TYPES << 'Spree::Cms::Pages::ProductExtraInfoTab'
+
       Spree::CmsSection::TYPES << 'Spree::Cms::Sections::SideBySideImagesTwoProduct'
       Spree::CmsSection::TYPES << 'Spree::Cms::Sections::ProductMosaic'
       Spree::CmsSection::TYPES << 'Spree::Cms::Sections::Title'
